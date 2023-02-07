@@ -6,13 +6,20 @@ const toDo = (() => {
     descr,
     date,
     prio,
+    proj,
   });
 
   module.createProject = (title) => {};
 
   module.deleteToDo = (title) => {};
 
+  module.changePrio = (title, prio) => {};
+
+  module.completeToDo = (title) => {};
+
   return { module };
 })();
 
-console.log(toDo.module.createToDo('Ola', 'dds', 'dd', 'ddd'));
+console.log(toDo.module.createToDo('Ola', 'dds', 'dd', 'ddd', 'project1'));
+
+
