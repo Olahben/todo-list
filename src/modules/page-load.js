@@ -7,6 +7,11 @@ const pageLoad = () => {
   const toDoContent = document.createElement('div');
   toDoContent.setAttribute('id', 'workspace');
 
+  const createToDo = document.createElement('button');
+  createToDo.classList.add('add-to-do');
+  createToDo.textContent = 'Create ToDo';
+
+  toDoContent.append(createToDo);
   content.append(sidebar, toDoContent);
 };
 
