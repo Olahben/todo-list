@@ -1,10 +1,10 @@
 const pageLoad = () => {
-  const content = document.createElement('div');
-  content.setAttribute('id', 'content');
+  const content = document.querySelector('#content');
 
-  content.style.cssText = `
-  display: grid;
-  grid-template-columns: 20vw;`;
+  const sidebar = document.createElement('div');
+  sidebar.setAttribute('id', 'sidebar');
+
+  content.append(sidebar);
 };
 
 export default pageLoad;
