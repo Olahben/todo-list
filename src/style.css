@@ -32,7 +32,7 @@
     width: min(140px, 25%);
     height: 5%;
 
-    font-family: 'sans-serif';
+    font-family: 'Teko', 'sans-serif';
     font-size: 100%;
     color: white;
     font-weight: 600;
@@ -53,4 +53,11 @@
 
 form {
     height: 100%;
+}
+
+.form-element {
+    color: white;
+    font-family: 'Teko';
+    font-size: 150%;
+    font-weight: 600;
 }
