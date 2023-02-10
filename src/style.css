@@ -61,3 +61,15 @@ form {
     font-size: 150%;
     font-weight: 600;
 }
+
+input {
+    border-radius: 5px;
+    border: 0px solid white;
+    outline: none;
+}
+
+input:hover, input:focus {
+    border: 1px solid #14FFEC;
+}
+
+
