@@ -97,6 +97,14 @@ form {
     font-weight: 600;
 
     grid-area: submit;
+
+    width: 15%;
+    height: 70%;
+}
+
+.submit:hover {
+    font-weight: 700;
+    border: 1px solid white;
 }
 
 .form-element {
