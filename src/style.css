@@ -84,6 +84,17 @@ form {
     grid-area: project;
 }
 
+.submit {
+    border: 0px solid white;
+    border-radius: 5px;
+    background-color: #14FFEC;
+
+    font-family: 'Teko', 'sans-serif';
+    font-size: 100%;
+    color: white;
+    font-weight: 600;
+}
+
 .form-element {
     color: white;
     font-family: 'Teko', 'Sans-serif';
