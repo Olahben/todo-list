@@ -53,6 +53,35 @@
 
 form {
     height: 100%;
+
+    display: grid;
+    grid-template-columns: 50%;
+    grid-template-rows: 30% 30% 30% 10%;
+    grid-template-areas: 
+    'title description'
+    'Due-date priority'
+    'project project'
+    'submit submit';
+}
+
+.title {
+    grid-area: title;
+}
+
+.descr {
+    grid-area: description;
+}
+
+.due-date {
+    grid-area: Due-date;
+}
+
+.priority {
+    grid-area: priority;
+}
+
+.project {
+    grid-area: project;
 }
 
 .form-element {
