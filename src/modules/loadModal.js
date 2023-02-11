@@ -28,7 +28,7 @@ const loadModal = () => {
 </div>
 
 <div class="project form-element">
-  <label for="project">Which project do you want to add this task to?</label><br>
+  <label for="project">Which project?</label><br>
   <input type="text" name="project" id="project"><br>
 </div>
 <button class="submit" type="submit">Submit</button>`;
