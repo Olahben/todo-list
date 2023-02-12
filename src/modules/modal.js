@@ -1,12 +1,13 @@
-const loadModal = () => {
-  const modal = document.createElement('div');
-  modal.classList.add('modal');
+const modal = {
+  loadModal: () => {
+    const toDoModal = document.createElement('div');
+    toDoModal.classList.add('modal');
 
-  const workspace = document.querySelector('#workspace');
-  console.log(workspace);
+    const workspace = document.querySelector('#workspace');
+    console.log(workspace);
 
-  const modalForm = document.createElement('form');
-  modalForm.innerHTML = `
+    const modalForm = document.createElement('form');
+    modalForm.innerHTML = `
   <div class="title form-element">
   <label for="title">Title</label><br>
   <input type="text" name="title" id="title"><br>
@@ -33,8 +34,13 @@ const loadModal = () => {
 </div>
 <button class="submit" type="submit">Submit</button>`;
 
-  modal.append(modalForm);
-  workspace.append(modal);
+    toDoModal.append(modalForm);
+    workspace.append(toDoModal);
+  },
+  closeModal() {
+    const toDoModal = document.querySelector('.modal');
+    toDoModal.style.display = 'none';
+  },
 };
 
-export default loadModal;
+export default modal;
