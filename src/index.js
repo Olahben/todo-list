@@ -1,10 +1,15 @@
 import pageLoad from './modules/page-load';
 import './style.css';
-import loadModal from './modules/loadModal';
+import modal from './modules/modal';
 
 pageLoad();
 document.querySelector('.add-to-do').addEventListener('click', () => {
-  loadModal();
-  const modal = document.querySelector('.modal');
-  modal.style.display = 'block';
+  modal.loadModal();
+  const modalForm = document.querySelector('.modal');
+  modalForm.style.display = 'block';
+
+  document.querySelector('.submit').addEventListener('click', (event) => {
+    console.log('something');
+    modal.closeModal(event);
+  });
 });
