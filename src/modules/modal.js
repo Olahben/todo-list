@@ -42,6 +42,13 @@ const modal = {
     const toDoModal = document.querySelector('.modal');
     toDoModal.style.display = 'none';
   },
+  getFormInfo() {
+    const title = document.querySelector('#title').textContent;
+    const descr = document.querySelector('#descr').textContent;
+    const dueDate = document.querySelector('#dueDate').value;
+    const priority = document.querySelector('#priority').textContent;
+    const project = document.querySelector('#priority').textContent;
+  },
 };
 
 export default modal;
