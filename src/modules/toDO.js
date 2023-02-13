@@ -20,4 +20,4 @@ const toDo = (() => {
   return { module };
 })();
 
-console.log(toDo.module.createToDo('Ola', 'dds', 'dd', 'ddd', 'project1'));
+export default toDo;
