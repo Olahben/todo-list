@@ -37,7 +37,8 @@ const modal = {
     toDoModal.append(modalForm);
     workspace.append(toDoModal);
   },
-  closeModal() {
+  closeModal(event) {
+    event.preventDefault();
     const toDoModal = document.querySelector('.modal');
     toDoModal.style.display = 'none';
   },
