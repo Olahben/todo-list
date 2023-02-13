@@ -11,5 +11,6 @@ document.querySelector('.add-to-do').addEventListener('click', () => {
   document.querySelector('.submit').addEventListener('click', (event) => {
     modal.getFormInfo();
     modal.closeModal(event);
+    modal.removeFormInfo();
   });
 });
