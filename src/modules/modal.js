@@ -1,3 +1,5 @@
+import toDo from './toDO';
+
 const modal = {
   loadModal: () => {
     const toDoModal = document.createElement('div');
@@ -48,6 +50,8 @@ const modal = {
     const dueDate = document.querySelector('#dueDate').value;
     const priority = document.querySelector('#priority').textContent;
     const project = document.querySelector('#priority').textContent;
+
+    toDo.module.createToDo(title, descr, dueDate, priority, project);
   },
 };
 
