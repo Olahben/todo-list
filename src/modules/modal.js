@@ -53,6 +53,9 @@ const modal = {
 
     toDo.module.createToDo(title, descr, dueDate, priority, project);
   },
+  removeFormInfo() {
+    document.querySelector('form').reset();
+  },
 };
 
 export default modal;
