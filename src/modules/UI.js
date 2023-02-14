@@ -15,6 +15,13 @@ const UI = (() => {
     sidebar.append(project);
   };
 
+  module.appendToDo = (title, project) => {
+    const toDoLi = document.createElement('li');
+    toDoLi.innerHTML = `
+    ${title}`;
+    project.append(toDoLi);
+  };
+
   return { module };
 })();
 
