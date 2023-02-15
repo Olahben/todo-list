@@ -23,6 +23,16 @@ const UI = (() => {
     project.append(toDoLi);
   };
 
+  module.removeDropDown = (project) => {
+    const subMenu = project.children[1];
+    subMenu.style.display = 'none';
+  };
+
+  module.showDropDown = (project) => {
+    const subMenu = project.children[1];
+    subMenu.style.display = 'block';
+  };
+
   return { module };
 })();
 
