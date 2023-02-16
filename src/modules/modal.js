@@ -39,11 +39,11 @@ const modal = {
     toDoModal.append(modalForm);
     workspace.append(toDoModal);
   },
-  closeModal(event) {
+  /* closeModal(event) {
     event.preventDefault();
     const toDoModal = document.querySelector('.modal');
     toDoModal.style.display = 'none';
-  },
+  }, */
   getFormInfo() {
     const title = document.querySelector('#title').textContent;
     const descr = document.querySelector('#descr').textContent;
