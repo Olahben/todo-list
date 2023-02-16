@@ -5,15 +5,15 @@ import UI from './modules/UI';
 
 pageLoad();
 document.querySelector('.add-to-do').addEventListener('click', () => {
-  modal.loadModal();
+  modal.module.loadModal();
   const modalForm = document.querySelector('.modal');
   modalForm.style.display = 'block';
 
   document.querySelector('.submit').addEventListener('click', (event) => {
-    modal.getFormInfo();
-    modal.validateForm();
-    modal.closeModal(event);
-    modal.removeFormInfo();
+    modal.module.getFormInfo();
+    modal.module.validateForm();
+    modal.module.closeModal(event);
+    modal.module.removeFormInfo();
   });
 });
 
