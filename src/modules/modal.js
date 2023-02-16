@@ -66,13 +66,12 @@ const modal = (() => {
       project,
     };
   };
-
   module.removeFormInfo = () => {
     document.querySelector('form').reset();
   };
 
-  module.validateForm = (title, descr, dueDate, priority, project) => {
-    console.log(title);
+  module.validateForm = () => {
+    console.log(module.getFormInfo().title);
   };
 
   return { module };
