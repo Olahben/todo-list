@@ -10,8 +10,8 @@ document.querySelector('.add-to-do').addEventListener('click', () => {
   modalForm.style.display = 'block';
 
   document.querySelector('.submit').addEventListener('click', (event) => {
-    modal.validateForm();
     modal.getFormInfo();
+    modal.validateForm();
     modal.closeModal(event);
     modal.removeFormInfo();
   });
