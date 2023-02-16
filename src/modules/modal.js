@@ -10,29 +10,29 @@ const modal = {
 
     const modalForm = document.createElement('form');
     modalForm.innerHTML = `
-  <div class="title form-element">
-  <label for="title">Title</label><br>
-  <input type="text" name="title" id="title"><br>
+    <div class="title form-element">
+  <label for="title">*Title:</label><br>
+  <input type="text" name="title" id="title" minlength="2" maxlength="24" required><br>
 </div>
 
 <div class="descr form-element">
   <label for="descr">Description</label><br>
-  <input type="text" name="descr" id="descr"><br>
+  <input type="text" name="descr" id="descr" maxlength="70"><br>
 </div>
 
 <div class="due-date form-element">
   <label for="dueDate">Due Date</label><br>
-  <input type="date" name="dueDate" id="dueDate"><br>
+  <input type="date" name="dueDate" id="dueDate" required><br>
 </div>
 
 <div class="priority form-element">
   <label for="priority">priority</label><br>
-  <input type="text" name="priority" id="priority"><br>
+  <input type="text" name="priority" id="priority" minlength="1" maxlength="30" required><br>
 </div>
 
 <div class="project form-element">
   <label for="project">Which project?</label><br>
-  <input type="text" name="project" id="project"><br>
+  <input type="text" name="project" id="project" minlength="2" maxlength="22" required><br>
 </div>
 <button class="submit" type="submit">Submit</button>`;
 
