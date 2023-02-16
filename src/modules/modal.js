@@ -1,7 +1,9 @@
 import toDo from './toDO';
 
-const modal = {
-  loadModal: () => {
+const modal = (() => {
+  const module = {};
+
+  module.loadModal = () => {
     const toDoModal = document.createElement('div');
     toDoModal.classList.add('modal');
 
@@ -38,13 +40,13 @@ const modal = {
 
     toDoModal.append(modalForm);
     workspace.append(toDoModal);
-  },
-  closeModal(event) {
+  };
+  module.closeModal = (event) => {
     event.preventDefault();
     const toDoModal = document.querySelector('.modal');
     toDoModal.style.display = 'none';
-  },
-  getFormInfo() {
+  };
+  module.getFormInfo = () => {
     const title = document.querySelector('#title').value;
     const descr = document.querySelector('#descr').value;
     const dueDate = document.querySelector('#dueDate').value;
@@ -52,11 +54,18 @@ const modal = {
     const project = document.querySelector('#project').value;
 
     toDo.module.createToDo(title, descr, dueDate, priority, project);
-    console.log(toDo.module.createToDo(title, descr, dueDate, priority, project));
-  },
-  removeFormInfo() {
+    console.log(
+      toDo.module.createToDo(title, descr, dueDate, priority, project),
+    );
+  };
+  module.removeFormInfo = () => {
     document.querySelector('form').reset();
-  },
-};
+  };
+  module.validateForm = () => {
+    // console.log(this.getFormInfo.title);
+  };
+
+  return { module };
+})();
 
 export default modal;
