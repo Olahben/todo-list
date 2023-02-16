@@ -45,13 +45,14 @@ const modal = {
     toDoModal.style.display = 'none';
   },
   getFormInfo() {
-    const title = document.querySelector('#title').textContent;
-    const descr = document.querySelector('#descr').textContent;
+    const title = document.querySelector('#title').value;
+    const descr = document.querySelector('#descr').value;
     const dueDate = document.querySelector('#dueDate').value;
-    const priority = document.querySelector('#priority').textContent;
-    const project = document.querySelector('#priority').textContent;
+    const priority = document.querySelector('#priority').value;
+    const project = document.querySelector('#project').value;
 
     toDo.module.createToDo(title, descr, dueDate, priority, project);
+    console.log(toDo.module.createToDo(title, descr, dueDate, priority, project));
   },
   removeFormInfo() {
     document.querySelector('form').reset();
