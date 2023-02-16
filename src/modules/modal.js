@@ -46,6 +46,7 @@ const modal = (() => {
     const toDoModal = document.querySelector('.modal');
     toDoModal.style.display = 'none';
   };
+
   module.getFormInfo = () => {
     const title = document.querySelector('#title').value;
     const descr = document.querySelector('#descr').value;
@@ -57,12 +58,21 @@ const modal = (() => {
     console.log(
       toDo.module.createToDo(title, descr, dueDate, priority, project),
     );
+    return {
+      title,
+      descr,
+      dueDate,
+      priority,
+      project,
+    };
   };
+
   module.removeFormInfo = () => {
     document.querySelector('form').reset();
   };
-  module.validateForm = () => {
-    // console.log(this.getFormInfo.title);
+
+  module.validateForm = (title, descr, dueDate, priority, project) => {
+    console.log(title);
   };
 
   return { module };
