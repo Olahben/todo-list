@@ -71,8 +71,11 @@ const modal = (() => {
     document.querySelector('form').reset();
   };
 
-  module.validateForm = () => {
+  module.validateForm = (event) => {
     console.log(module.getFormInfo().title.length <= 2);
+
+    module.closeModal(event);
+    module.removeFormInfo();
   };
 
   return { module };
