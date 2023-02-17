@@ -36,6 +36,7 @@ const modal = (() => {
   <label for="project">Which project?</label><br>
   <input type="text" name="project" id="project" minlength="2" maxlength="22" required><br>
 </div>
+<span class="errorText"></span>
 <button class="submit" type="submit">Submit</button>`;
 
     toDoModal.append(modalForm);
@@ -71,7 +72,7 @@ const modal = (() => {
   };
 
   module.validateForm = () => {
-    console.log(module.getFormInfo().title);
+    console.log(module.getFormInfo().title.length <= 2);
   };
 
   return { module };
