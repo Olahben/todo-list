@@ -4,14 +4,15 @@ const UI = (() => {
   module.createToDo = () => {};
 
   module.createProject = (title) => {
+    const projectTitle = title.replace(/ /g, '-');
     const sidebar = document.querySelector('#sidebar');
     const project = document.createElement('div');
-    project.classList.add(`${title}`);
+    project.classList.add(projectTitle);
     project.classList.add('project-sidebar');
     project.innerHTML = `
-    ${title}
+    ${projectTitle}
     <i class='bx bx-right-arrow-alt'></i>
-    <ul class="sub-menu ${title}"></ul>`;
+    <ul class="sub-menu ${projectTitle}"></ul>`;
 
     sidebar.append(project);
   };
