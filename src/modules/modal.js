@@ -56,10 +56,6 @@ const modal = (() => {
     const priority = document.querySelector('#priority').value;
     const project = document.querySelector('#project').value;
 
-    toDo.module.createToDo(title, descr, dueDate, priority, project);
-    console.log(
-      toDo.module.createToDo(title, descr, dueDate, priority, project),
-    );
     return {
       title,
       descr,
@@ -76,17 +72,20 @@ const modal = (() => {
   module.validateForm = (event) => {
     const errorText = document.querySelector('.errorText');
     if (module.getFormInfo().title.length < 2) {
-      errorText.textContent = 'You have to provide a title with 3 characters or more.';
+      errorText.textContent =
+        'You have to provide a title with 3 characters or more.';
       event.preventDefault();
       return 1;
     }
     if (module.getFormInfo().title.length > 24) {
-      errorText.textContent = 'You have to keep your title under 24 characters.';
+      errorText.textContent =
+        'You have to keep your title under 24 characters.';
       event.preventDefault();
       return 1;
     }
     if (module.getFormInfo().descr.length > 70) {
-      errorText.textContent = 'You have to keep your description under 70 characters.';
+      errorText.textContent =
+        'You have to keep your description under 70 characters.';
       event.preventDefault();
       return 1;
     }
@@ -96,26 +95,38 @@ const modal = (() => {
       return 1;
     }
     if (module.getFormInfo().priority.length < 1) {
-      errorText.textContent = 'You have to provide a priority with 1 or more characters.';
+      errorText.textContent =
+        'You have to provide a priority with 1 or more characters.';
       event.preventDefault();
       return 1;
     }
     if (module.getFormInfo().priority.length > 30) {
-      errorText.textContent = 'You have to provide a priority under 30 characters.';
+      errorText.textContent =
+        'You have to provide a priority under 30 characters.';
       event.preventDefault();
       return 1;
     }
     if (module.getFormInfo().project.length < 2) {
-      errorText.textContent = 'You have to provide a project name which is more than 2 characters. ';
+      errorText.textContent =
+        'You have to provide a project name which is more than 2 characters. ';
       event.preventDefault();
       return 1;
     }
     if (module.getFormInfo().project.length > 22) {
-      errorText.textContent = 'You have to provide a project name that is under 22 characters';
+      errorText.textContent =
+        'You have to provide a project name that is under 22 characters';
       event.preventDefault();
       return 1;
     }
 
+    toDo.module.createToDo(
+      module.getFormInfo().title,
+      module.getFormInfo().descr,
+      module.getFormInfo().dueDate,
+      module.getFormInfo().priority,
+      module.getFormInfo().project,
+    );
+    UI.module.createProject(module.getFormInfo().project);
     module.closeModal(event);
     module.removeFormInfo();
   };
