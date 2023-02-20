@@ -75,7 +75,7 @@ const modal = (() => {
 
   module.validateForm = (event) => {
     const errorText = document.querySelector('.errorText');
-    if (module.getFormInfo().title.length <= 2) {
+    if (module.getFormInfo().title.length < 2) {
       errorText.textContent = 'You have to provide a title with 3 characters or more.';
       event.preventDefault();
       return 1;
