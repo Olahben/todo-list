@@ -18,9 +18,10 @@ const UI = (() => {
   };
 
   module.appendToDo = (title, project) => {
+    const toDoTitle = title.replace(/ /g, '-');
     const toDoLi = document.createElement('li');
     toDoLi.innerHTML = `
-    ${title}`;
+    ${toDoTitle}`;
     console.log(project);
     project.append(toDoLi);
   };

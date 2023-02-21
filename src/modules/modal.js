@@ -128,7 +128,8 @@ const modal = (() => {
     );
     UI.module.createProject(module.getFormInfo().project);
     const newProject = module.getFormInfo().project;
-    UI.module.appendToDo(module.getFormInfo().title, document.querySelector(`ul.${newProject}`));
+    const newProjectClean = newProject.replace(/ /g, '-');
+    UI.module.appendToDo(module.getFormInfo().title, document.querySelector(`ul.${newProjectClean}`));
     module.closeModal(event);
     module.removeFormInfo();
   };
