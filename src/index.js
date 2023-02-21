@@ -18,7 +18,7 @@ document.querySelector('.add-to-do').addEventListener('click', () => {
 UI.module.createProject('fdijoiosdf');
 UI.module.createProject('ooh');
 
-const projects = document.querySelectorAll('.project-sidebar');
+/* const projects = document.querySelectorAll('.project-sidebar');
 projects.forEach((project) => {
   project.addEventListener('click', (event) => {
     if (event.target.children[1].style.display === 'none') {
@@ -27,4 +27,4 @@ projects.forEach((project) => {
       UI.module.removeDropDown(event.target);
     }
   });
-});
+}); */

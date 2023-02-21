@@ -132,6 +132,7 @@ const modal = (() => {
     UI.module.appendToDo(module.getFormInfo().title, document.querySelector(`ul.${newProjectClean}`));
     module.closeModal(event);
     module.removeFormInfo();
+    UI.module.toggleSidebarDropdown();
   };
 
   return { module };

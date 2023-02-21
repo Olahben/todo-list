@@ -36,6 +36,19 @@ const UI = (() => {
     subMenu.style.display = 'block';
   };
 
+  module.toggleSidebarDropdown = () => {
+    const projects = document.querySelectorAll('.project-sidebar');
+    projects.forEach((project) => {
+      project.addEventListener('click', (event) => {
+        if (event.target.children[1].style.display === 'none') {
+          module.showDropDown(event.target);
+        } else {
+          module.removeDropDown(event.target);
+        }
+      });
+    });
+  };
+
   return { module };
 })();
 
