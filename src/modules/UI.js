@@ -21,6 +21,7 @@ const UI = (() => {
     const toDoLi = document.createElement('li');
     toDoLi.innerHTML = `
     ${title}`;
+    console.log(project);
     project.append(toDoLi);
   };
 
