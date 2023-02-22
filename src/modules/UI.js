@@ -30,6 +30,7 @@ const UI = (() => {
     <ul class="sub-menu ${projectTitle}"></ul>`;
 
     sidebar.append(project);
+    module.toggleSidebarDropdown();
   };
 
   module.appendToDo = (title, project) => {
@@ -57,9 +58,9 @@ const UI = (() => {
       project.addEventListener('click', (event) => {
         if (event.target.children[1].style.display === 'none') {
           module.showDropDown(event.target);
-        } else {
-          module.removeDropDown(event.target);
+          return 1;
         }
+        module.removeDropDown(event.target);
       });
     });
   };
