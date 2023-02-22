@@ -1,9 +1,24 @@
 const UI = (() => {
   const module = {};
+  const projectArr = [];
 
   module.createToDo = () => {};
 
   module.createProject = (title) => {
+    let invalid = false;
+    projectArr.forEach((proj) => {
+      if (proj === title) {
+        invalid = true;
+        return 1;
+      }
+    });
+
+    if (invalid) {
+      return 1;
+    }
+
+    projectArr.push(title);
+
     const projectTitle = title.replace(/ /g, '-');
     const sidebar = document.querySelector('#sidebar');
     const project = document.createElement('div');
