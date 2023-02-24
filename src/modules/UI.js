@@ -28,9 +28,11 @@ const UI = (() => {
     ${projectTitle}
     <i class='bx bx-right-arrow-alt'></i>
     <ul class="sub-menu ${projectTitle}"></ul>`;
+    project.children[1].dropDownVisibility = false;
 
     sidebar.append(project);
-    module.toggleSidebarDropdown();
+    let arrows = document.querySelectorAll('i');
+    module.toggleSidebarDropdown(arrows);
   };
 
   module.appendToDo = (title, project) => {
@@ -42,25 +44,10 @@ const UI = (() => {
     project.append(toDoLi);
   };
 
-  module.removeDropDown = (project) => {
-    const subMenu = project.children[1];
-    subMenu.style.display = 'none';
-  };
-
-  module.showDropDown = (project) => {
-    const subMenu = project.children[1];
-    subMenu.style.display = 'block';
-  };
-
-  module.toggleSidebarDropdown = () => {
-    const projects = document.querySelectorAll('.project-sidebar');
-    projects.forEach((project) => {
-      project.addEventListener('click', (event) => {
-        if (event.target.children[1].style.display === 'none') {
-          module.showDropDown(event.target);
-          return 1;
-        }
-        module.removeDropDown(event.target);
+  module.toggleSidebarDropdown = (arrows) => {
+    arrows.forEach((arrow) => {
+      arrow.addEventListener('click', (event) => {
+        event.target.parentElement.classList.toggle('showMenu');
       });
     });
   };
