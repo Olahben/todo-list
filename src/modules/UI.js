@@ -28,11 +28,13 @@ const UI = (() => {
     ${projectTitle}
     <i class='bx bx-right-arrow-alt'></i>
     <ul class="sub-menu ${projectTitle}"></ul>`;
-    project.children[1].dropDownVisibility = false;
+    project.addEventListener('click', (event) => {
+      module.toggleSidebarDropdown(event);
+    });
 
     sidebar.append(project);
-    let arrows = document.querySelectorAll('i');
-    module.toggleSidebarDropdown(arrows);
+    // let arrows = document.querySelectorAll('i');
+    // module.toggleSidebarDropdown(arrows);
   };
 
   module.appendToDo = (title, project) => {
@@ -44,12 +46,8 @@ const UI = (() => {
     project.append(toDoLi);
   };
 
-  module.toggleSidebarDropdown = (arrows) => {
-    arrows.forEach((arrow) => {
-      arrow.addEventListener('click', (event) => {
-        event.target.parentElement.classList.toggle('showMenu');
-      });
-    });
+  module.toggleSidebarDropdown = (event) => {
+    event.target.classList.toggle('showMenu');
   };
 
   return { module };
