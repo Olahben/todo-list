@@ -42,6 +42,8 @@ const modal = (() => {
 
     toDoModal.append(modalForm);
     workspace.append(toDoModal);
+    const errorText = document.querySelector('.errorText');
+    errorText.textContent = '';
   };
   module.closeModal = (event) => {
     event.preventDefault();
@@ -132,7 +134,7 @@ const modal = (() => {
     UI.module.appendToDo(module.getFormInfo().title, document.querySelector(`ul.${newProjectClean}`));
     module.closeModal(event);
     module.removeFormInfo();
-    UI.module.toggleSidebarDropdown();
+    // UI.module.toggleSidebarDropdown();
   };
 
   return { module };
