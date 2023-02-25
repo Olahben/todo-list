@@ -1,7 +1,6 @@
 import pageLoad from './modules/page-load';
 import './style.css';
 import modal from './modules/modal';
-import UI from './modules/UI';
 
 pageLoad();
 document.querySelector('.add-to-do').addEventListener('click', () => {
@@ -14,6 +13,3 @@ document.querySelector('.add-to-do').addEventListener('click', () => {
     modal.module.validateForm(event);
   });
 });
-
-UI.module.createProject('fdijoiosdf');
-UI.module.createProject('ooh');
