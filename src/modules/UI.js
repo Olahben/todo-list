@@ -25,7 +25,7 @@ const UI = (() => {
     project.classList.add(projectTitle);
     project.classList.add('project-sidebar');
     project.innerHTML = `
-    ${projectTitle}
+    <span>${projectTitle}</span>
     <i class='bx bx-right-arrow-alt'></i>
     <ul class="sub-menu ${projectTitle}"></ul>`;
     project.addEventListener('click', (event) => {
