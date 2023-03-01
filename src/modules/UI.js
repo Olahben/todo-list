@@ -30,11 +30,10 @@ const UI = (() => {
     <ul class="sub-menu ${projectTitle}"></ul>`;
     project.addEventListener('click', (event) => {
       module.toggleSidebarDropdown(event);
+      module.removeWorkspaceContent();
     });
 
     sidebar.append(project);
-    // let arrows = document.querySelectorAll('i');
-    // module.toggleSidebarDropdown(arrows);
   };
 
   module.appendToDo = (title, project) => {
@@ -48,6 +47,11 @@ const UI = (() => {
 
   module.toggleSidebarDropdown = (event) => {
     event.target.classList.toggle('showMenu');
+  };
+
+  module.removeWorkspaceContent = () => {
+    const workspace = document.querySelector('#workspace');
+    workspace.removeChild(workspace.childNodes[0]);
   };
 
   return { module };
