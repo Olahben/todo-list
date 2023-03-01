@@ -1,4 +1,3 @@
-import toDo from './toDO';
 import UI from './UI';
 
 const modal = (() => {
