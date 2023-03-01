@@ -120,21 +120,15 @@ const modal = (() => {
       event.preventDefault();
       return 1;
     }
-
-    toDo.module.createToDo(
-      module.getFormInfo().title,
-      module.getFormInfo().descr,
-      module.getFormInfo().dueDate,
-      module.getFormInfo().priority,
-      module.getFormInfo().project,
-    );
     UI.module.createProject(module.getFormInfo().project);
     const newProject = module.getFormInfo().project;
     const newProjectClean = newProject.replace(/ /g, '-');
-    UI.module.appendToDo(module.getFormInfo().title, document.querySelector(`ul.${newProjectClean}`));
+    UI.module.appendToDo(
+      module.getFormInfo().title,
+      document.querySelector(`ul.${newProjectClean}`),
+    );
     module.closeModal(event);
     module.removeFormInfo();
-    // UI.module.toggleSidebarDropdown();
   };
 
   return { module };
