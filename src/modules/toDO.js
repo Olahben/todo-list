@@ -1,4 +1,5 @@
 import modal from './modal';
+import UI from './UI';
 
 const toDo = (() => {
   const module = {};
@@ -25,6 +26,7 @@ const toDo = (() => {
 
   module.checkToDoProj = (project) => {
     const projectToDoTasks = toDoArr.filter((toDoTask) => toDoTask.proj === project);
+    UI.module.appendProjectToDos(projectToDoTasks);
   };
 
   module.createProject = (title) => {};
