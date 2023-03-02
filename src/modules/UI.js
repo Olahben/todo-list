@@ -57,6 +57,36 @@ const UI = (() => {
     workspace.removeChild(workspace.childNodes[0]);
   };
 
+  module.appendProjectToDos = (arr) => {
+    const workspace = document.querySelector('#workspace');
+    const projectToDosContainer = document.createElement('div');
+    projectToDosContainer.classList.add('project-to-dos');
+
+    arr.forEach((toDoTask) => {
+      const card = document.createElement('div');
+      card.classList.add('to-do-card');
+      card.classList.add(`${toDoTask.title}-card`);
+      const cardTitle = document.createElement('span');
+      cardTitle.textContent = toDoTask.title;
+
+      const cardDescr = document.createElement('span');
+      cardDescr.textContent = toDoTask.descr;
+
+      const cardDate = document.createElement('span');
+      cardDate.textContent = toDoTask.date;
+
+      const cardPrio = document.createElement('span');
+      cardPrio.textContent = toDoTask.prio;
+
+      const cardProj = document.createElement('span');
+      cardProj.textContent = `${toDoTask.proj}is the project this to-do is stored in!`;
+
+      card.append(cardTitle, cardDescr, cardDate, cardPrio, cardProj);
+      projectToDosContainer.append(card);
+    });
+    workspace.appendChild(projectToDosContainer);
+  };
+
   return { module };
 })();
 
