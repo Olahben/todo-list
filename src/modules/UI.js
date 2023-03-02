@@ -21,7 +21,7 @@ const UI = (() => {
 
     projectArr.push(title);
 
-    const projectTitle = title.replace(/ /g, '-');
+    const projectTitle = title.replace(/\s/g, '');
     const sidebar = document.querySelector('#sidebar');
     const project = document.createElement('div');
     project.classList.add(projectTitle);
@@ -40,7 +40,7 @@ const UI = (() => {
   };
 
   module.appendToDo = (title, project) => {
-    const toDoTitle = title.replace(/ /g, '-');
+    const toDoTitle = title.replace(/\s/g, '');
     const toDoLi = document.createElement('li');
     toDoLi.innerHTML = `
     ${toDoTitle}`;

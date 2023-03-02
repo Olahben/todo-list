@@ -122,7 +122,7 @@ const modal = (() => {
     }
     UI.module.createProject(module.getFormInfo().project);
     const newProject = module.getFormInfo().project;
-    const newProjectClean = newProject.replace(/ /g, '-');
+    const newProjectClean = newProject.replace(/\s/g, '');
     UI.module.appendToDo(
       module.getFormInfo().title,
       document.querySelector(`ul.${newProjectClean}`),
