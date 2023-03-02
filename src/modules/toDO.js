@@ -1,5 +1,8 @@
+import modal from './modal';
+
 const toDo = (() => {
   const module = {};
+  const toDoArr = {};
 
   module.createToDo = (title, descr, date, prio, proj) => ({
     title,
@@ -8,6 +11,18 @@ const toDo = (() => {
     prio,
     proj,
   });
+
+  module.saveToDo = () => {
+    const toDo2 = module.createToDo(
+      modal.module.getFormInfo().title,
+      modal.module.getFormInfo().descr,
+      modal.module.getFormInfo().dueDate,
+      modal.module.getFormInfo().priority,
+      modal.module.getFormInfo().project,
+    );
+    console.log(toDo2);
+    toDoArr.push(toDo2);
+  };
 
   module.createProject = (title) => {};
 
