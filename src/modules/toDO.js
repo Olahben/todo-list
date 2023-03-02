@@ -2,7 +2,7 @@ import modal from './modal';
 
 const toDo = (() => {
   const module = {};
-  const toDoArr = {};
+  const toDoArr = [];
 
   module.createToDo = (title, descr, date, prio, proj) => ({
     title,
@@ -20,8 +20,11 @@ const toDo = (() => {
       modal.module.getFormInfo().priority,
       modal.module.getFormInfo().project,
     );
-    console.log(toDo2);
-    toDoArr.push(toDo2);
+    toDoArr.push(toDo2.proj.replace(/ /g, '-'));
+  };
+
+  module.checkToDoProj = (project) => {
+    const projectToDoTasks = toDoArr.filter((toDoTask) => toDoTask === project);
   };
 
   module.createProject = (title) => {};
