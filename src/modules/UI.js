@@ -1,3 +1,5 @@
+import toDo from './toDO';
+
 const UI = (() => {
   const module = {};
   const projectArr = [];
@@ -31,6 +33,7 @@ const UI = (() => {
     project.addEventListener('click', (event) => {
       module.toggleSidebarDropdown(event);
       module.removeWorkspaceContent();
+      toDo.module.checkToDoProj();
     });
 
     sidebar.append(project);
