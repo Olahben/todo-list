@@ -1,4 +1,5 @@
 import UI from './UI';
+import toDo from './toDO';
 
 const modal = (() => {
   const module = {};
@@ -127,6 +128,7 @@ const modal = (() => {
       document.querySelector(`ul.${newProjectClean}`),
     );
     module.closeModal(event);
+    toDo.module.saveToDo();
     module.removeFormInfo();
   };
 
