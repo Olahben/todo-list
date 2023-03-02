@@ -33,7 +33,7 @@ const UI = (() => {
     project.addEventListener('click', (event) => {
       module.toggleSidebarDropdown(event);
       module.removeWorkspaceContent();
-      toDo.module.checkToDoProj();
+      toDo.module.checkToDoProj(event.target.children[0].textContent);
     });
 
     sidebar.append(project);
