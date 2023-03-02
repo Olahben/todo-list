@@ -18,13 +18,13 @@ const toDo = (() => {
       modal.module.getFormInfo().descr,
       modal.module.getFormInfo().dueDate,
       modal.module.getFormInfo().priority,
-      modal.module.getFormInfo().project,
+      modal.module.getFormInfo().project.replace(/\s/g, ''),
     );
-    toDoArr.push(toDo2.proj.replace(/ /g, '-'));
+    toDoArr.push(toDo2);
   };
 
   module.checkToDoProj = (project) => {
-    const projectToDoTasks = toDoArr.filter((toDoTask) => toDoTask === project);
+    const projectToDoTasks = toDoArr.filter((toDoTask) => toDoTask.proj === project);
   };
 
   module.createProject = (title) => {};
