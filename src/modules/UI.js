@@ -78,7 +78,7 @@ const UI = (() => {
       const cardPrio = document.createElement('span');
       cardPrio.textContent = toDoTask.prio;
 
-      card.append(cardTitle, cardDescr, cardDate, cardPrio);
+      card.append(cardTitle, cardDate, cardDescr, cardPrio);
       projectToDosContainer.append(card);
     });
     workspace.appendChild(projectToDosContainer);
