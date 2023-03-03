@@ -182,6 +182,10 @@ input:hover, input:focus {
     font-size: 150%;
  }
 
+ .to-do-card span:nth-child(2), .to-do-card span:nth-child(3) {
+    display: none;
+ }
+
  .project-to-dos {
     width: 100%;
     height: 100%;
