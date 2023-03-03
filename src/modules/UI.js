@@ -73,10 +73,15 @@ const UI = (() => {
       cardDescr.textContent = toDoTask.descr;
 
       const cardDate = document.createElement('span');
-      cardDate.textContent = toDoTask.date;
+      cardDate.textContent = `You have to complete this task before ${toDoTask.date}`;
 
       const cardPrio = document.createElement('span');
-      cardPrio.textContent = toDoTask.prio;
+      cardPrio.textContent = `Priority: ${toDoTask.prio}`;
+
+      const showDetails = document.createElement('button');
+      showDetails.textContent = 'Show details';
+      showDetails.addEventListener('click', () => {
+      });
 
       card.append(cardTitle, cardDate, cardDescr, cardPrio);
       projectToDosContainer.append(card);
