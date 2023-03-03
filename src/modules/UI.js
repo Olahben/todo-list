@@ -78,10 +78,7 @@ const UI = (() => {
       const cardPrio = document.createElement('span');
       cardPrio.textContent = toDoTask.prio;
 
-      const cardProj = document.createElement('span');
-      cardProj.textContent = `${toDoTask.proj}is the project this to-do is stored in!`;
-
-      card.append(cardTitle, cardDescr, cardDate, cardPrio, cardProj);
+      card.append(cardTitle, cardDescr, cardDate, cardPrio);
       projectToDosContainer.append(card);
     });
     workspace.appendChild(projectToDosContainer);
