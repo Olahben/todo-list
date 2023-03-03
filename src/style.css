@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
 
+body {
+    margin: 0;
+}
+
 #content {
     display: grid;
     grid-template-areas: 
@@ -160,4 +164,30 @@ input:hover, input:focus {
 
  li {
     list-style-type: none;
+ }
+
+ .to-do-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0D7377;
+    color: white;
+    font-family: 'Teko', 'sans-serif';
+    border-radius: 5%;
+    font-size: 105%;
+    gap: 10px;
+    margin: 10px;
+ }
+ .to-do-card span:nth-child(1) {
+    font-size: 150%;
+ }
+
+ .project-to-dos {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 6%;
  }
