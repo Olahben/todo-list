@@ -69,6 +69,13 @@ const UI = (() => {
     const projectToDosContainer = document.createElement('div');
     projectToDosContainer.classList.add('project-to-dos');
 
+    const projectSettings = document.createElement('div');
+    projectSettings.classList.add('settings');
+    const close = document.createElement('button');
+    close.textContent = 'Close project';
+    close.classList.add('red-btn');
+    projectSettings.append(close);
+
     arr.forEach((toDoTask) => {
       const card = document.createElement('div');
       card.classList.add('to-do-card');
@@ -94,7 +101,11 @@ const UI = (() => {
       card.append(cardTitle, cardDate, cardDescr, cardPrio, showDetails);
       projectToDosContainer.append(card);
     });
-    workspace.append(projectToDosContainer);
+    workspace.append(projectSettings, projectToDosContainer);
+    workspace.style.cssText = `
+    display: grid;
+    grid-template-rows: 12%;
+    `;
   };
 
   return { module };
