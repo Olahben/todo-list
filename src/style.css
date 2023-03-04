@@ -46,6 +46,17 @@ body {
     font-weight: 600;
 }
 
+button {
+    font-family: 'Teko', 'sans-serif';
+    font-size: 100%;
+    color: white;
+    font-weight: 600;
+    border: 1px solid white;
+    border-radius: 5px;
+
+    background-color: #0D7377;
+}
+
 .modal {
     display: none;
     position: fixed;
