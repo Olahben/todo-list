@@ -64,7 +64,7 @@ const UI = (() => {
     toDoCardChildren.item(4).style.display = 'none';
   };
 
-  module.appendProjectToDos = (arr) => {
+  module.appendProjectElements = (arr) => {
     const workspace = document.querySelector('#workspace');
     const projectToDosContainer = document.createElement('div');
     projectToDosContainer.classList.add('project-to-dos');
@@ -94,7 +94,7 @@ const UI = (() => {
       card.append(cardTitle, cardDate, cardDescr, cardPrio, showDetails);
       projectToDosContainer.append(card);
     });
-    workspace.appendChild(projectToDosContainer);
+    workspace.append(projectToDosContainer);
   };
 
   return { module };

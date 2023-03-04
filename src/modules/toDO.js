@@ -26,7 +26,7 @@ const toDo = (() => {
 
   module.checkToDoProj = (project) => {
     const projectToDoTasks = toDoArr.filter((toDoTask) => toDoTask.proj === project);
-    UI.module.appendProjectToDos(projectToDoTasks);
+    UI.module.appendProjectElements(projectToDoTasks);
   };
 
   module.createProject = (title) => {};
