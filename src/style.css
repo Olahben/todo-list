@@ -206,3 +206,19 @@ input:hover, input:focus {
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
     gap: 6%;
  }
+
+ .settings {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .red-btn {
+    background-color: rgb(187, 51, 51);
+    font-size: 135%;
+    width: 15%;
+    height: 38%;
+ }
