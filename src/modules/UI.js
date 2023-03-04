@@ -64,6 +64,21 @@ const UI = (() => {
     toDoCardChildren.item(4).style.display = 'none';
   };
 
+  module.closeProject = () => {
+    const settings = document.querySelector('.settings');
+    const projectToDosContainer = settings.nextSibling;
+    const workspace = document.querySelector('#workspace');
+    settings.remove();
+    projectToDosContainer.remove();
+    workspace.style.cssText -= `
+    grid-template-columns: 12%;
+    `;
+    const createToDo = document.createElement('button');
+    createToDo.classList.add('add-to-do');
+    createToDo.textContent = 'Create ToDo';
+    workspace.append(createToDo);
+  };
+
   module.appendProjectElements = (arr) => {
     const workspace = document.querySelector('#workspace');
     const projectToDosContainer = document.createElement('div');
@@ -74,6 +89,9 @@ const UI = (() => {
     const close = document.createElement('button');
     close.textContent = 'Close project';
     close.classList.add('red-btn');
+    close.addEventListener('click', () => {
+      module.closeProject();
+    });
     projectSettings.append(close);
 
     arr.forEach((toDoTask) => {
