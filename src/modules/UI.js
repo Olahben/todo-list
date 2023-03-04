@@ -57,6 +57,13 @@ const UI = (() => {
     workspace.removeChild(workspace.childNodes[0]);
   };
 
+  module.showCardDetails = (event) => {
+    const toDoCardChildren = event.target.parentElement.children;
+    toDoCardChildren.item(2).style.display = 'inline';
+    toDoCardChildren.item(3).style.display = 'inline';
+    toDoCardChildren.item(4).style.display = 'none';
+  };
+
   module.appendProjectToDos = (arr) => {
     const workspace = document.querySelector('#workspace');
     const projectToDosContainer = document.createElement('div');
@@ -80,10 +87,11 @@ const UI = (() => {
 
       const showDetails = document.createElement('button');
       showDetails.textContent = 'Show details';
-      showDetails.addEventListener('click', () => {
+      showDetails.addEventListener('click', (event) => {
+        module.showCardDetails(event);
       });
 
-      card.append(cardTitle, cardDate, cardDescr, cardPrio);
+      card.append(cardTitle, cardDate, cardDescr, cardPrio, showDetails);
       projectToDosContainer.append(card);
     });
     workspace.appendChild(projectToDosContainer);
