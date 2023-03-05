@@ -3,7 +3,7 @@ import toDo from './toDO';
 const UI = (() => {
   const module = {};
   const projectArr = [];
-
+  let projectOpenCounter = false;
   module.createToDo = () => {};
 
   module.createProject = (title) => {
@@ -54,7 +54,12 @@ const UI = (() => {
 
   module.removeWorkspaceContent = () => {
     const workspace = document.querySelector('#workspace');
+    if (projectOpenCounter) {
+      workspace.removeChild(workspace.childNodes[1]);
+      return;
+    }
     workspace.removeChild(workspace.childNodes[0]);
+    projectOpenCounter = true;
   };
 
   module.showCardDetails = (event) => {
