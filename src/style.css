@@ -219,6 +219,6 @@ input:hover, input:focus {
  .red-btn {
     background-color: rgb(187, 51, 51);
     font-size: 135%;
-    width: 15%;
+    width: max(150px, 15%);
     height: 38%;
  }
