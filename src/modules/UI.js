@@ -1,10 +1,24 @@
 import toDo from './toDO';
+import modal from './modal';
 
 const UI = (() => {
   const module = {};
   const projectArr = [];
   let projectOpenCounter = false;
   module.createToDo = () => {};
+
+  module.addEventListenerToBtn = () => {
+    document.querySelector('.add-to-do').addEventListener('click', () => {
+      modal.module.loadModal();
+      const modalForm = document.querySelector('.modal');
+      modalForm.style.display = 'block';
+
+      document.querySelector('.submit').addEventListener('click', (event) => {
+        modal.module.getFormInfo();
+        modal.module.validateForm(event);
+      });
+    });
+  };
 
   module.createProject = (title) => {
     let invalid = false;
@@ -82,6 +96,7 @@ const UI = (() => {
     createToDo.classList.add('add-to-do');
     createToDo.textContent = 'Create ToDo';
     workspace.append(createToDo);
+    module.addEventListenerToBtn();
   };
 
   module.appendProjectElements = (arr) => {
