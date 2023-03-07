@@ -3,7 +3,7 @@ import UI from './UI';
 
 const toDo = (() => {
   const module = {};
-  const toDoArr = [];
+  module.toDoArr = [];
 
   module.createToDo = (title, descr, date, prio, proj) => ({
     title,
@@ -21,11 +21,13 @@ const toDo = (() => {
       modal.module.getFormInfo().priority,
       modal.module.getFormInfo().project.replace(/\s/g, ''),
     );
-    toDoArr.push(toDo2);
+    module.toDoArr.push(toDo2);
   };
 
   module.checkToDoProj = (project) => {
-    const projectToDoTasks = toDoArr.filter((toDoTask) => toDoTask.proj === project);
+    const projectToDoTasks = module.toDoArr.filter(
+      (toDoTask) => toDoTask.proj === project,
+    );
     UI.module.appendProjectElements(projectToDoTasks);
   };
 
