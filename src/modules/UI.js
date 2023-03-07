@@ -5,6 +5,8 @@ const UI = (() => {
   const module = {};
   const projectArr = [];
   let projectOpenCounter = false;
+  let projectVisible = false;
+  let removeWorkspaceContentFlag = true;
   module.createToDo = () => {};
 
   module.addEventListenerToBtn = () => {
@@ -46,8 +48,8 @@ const UI = (() => {
     <ul class="sub-menu ${projectTitle}"></ul>`;
     project.addEventListener('click', (event) => {
       module.toggleSidebarDropdown(event);
-      module.removeWorkspaceContent();
       toDo.module.checkToDoProj(event.target.children[0].textContent);
+      module.removeWorkspaceContent();
     });
 
     sidebar.append(project);
@@ -58,7 +60,6 @@ const UI = (() => {
     const toDoLi = document.createElement('li');
     toDoLi.innerHTML = `
     ${toDoTitle}`;
-    console.log(project);
     project.append(toDoLi);
   };
 
@@ -68,6 +69,9 @@ const UI = (() => {
 
   module.removeWorkspaceContent = () => {
     const workspace = document.querySelector('#workspace');
+    if (workspace.childNodes[1].textContent === 'Close project') {
+      return;
+    }
     if (projectOpenCounter) {
       workspace.removeChild(workspace.childNodes[1]);
       return;
@@ -97,9 +101,13 @@ const UI = (() => {
     createToDo.textContent = 'Create ToDo';
     workspace.append(createToDo);
     module.addEventListenerToBtn();
+    projectVisible = false;
   };
 
   module.appendProjectElements = (arr) => {
+    if (projectVisible) {
+      return 1;
+    }
     const workspace = document.querySelector('#workspace');
     const projectToDosContainer = document.createElement('div');
     projectToDosContainer.classList.add('project-to-dos');
@@ -144,6 +152,7 @@ const UI = (() => {
     display: grid;
     grid-template-rows: 12%;
     `;
+    projectVisible = true;
   };
 
   return { module };
