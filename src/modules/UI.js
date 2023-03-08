@@ -6,7 +6,6 @@ const UI = (() => {
   const projectArr = [];
   let projectOpenCounter = false;
   let projectVisible = false;
-  let removeWorkspaceContentFlag = true;
   module.createToDo = () => {};
 
   module.addEventListenerToBtn = () => {
@@ -104,6 +103,28 @@ const UI = (() => {
     projectVisible = false;
   };
 
+  let indexCounter = 0;
+  module.deleteToDo = (event) => {
+    indexCounter = 0;
+    event.target.parentElement.remove();
+    const toDoTitle = event.target.parentElement.childNodes[0].textContent;
+    const toDoProj = event.target.parentElement.proj;
+    const toDoTasks = document.querySelectorAll(`.${toDoProj} .sub-menu li`);
+    toDoTasks.forEach((task) => {
+      if (task.textContent.replace(/\s/g, '') === toDoTitle) {
+        task.remove();
+      }
+    });
+
+    const { toDoArr } = toDo.module;
+    toDoArr.forEach((toDoObj) => {
+      indexCounter++;
+      if (toDoObj.title === toDoTitle && toDoObj.proj === toDoProj) {
+        toDoArr.splice(indexCounter - 1, 1);
+      }
+    });
+  };
+
   module.appendProjectElements = (arr) => {
     if (projectVisible) {
       return 1;
@@ -129,6 +150,8 @@ const UI = (() => {
       const cardTitle = document.createElement('span');
       cardTitle.textContent = toDoTask.title;
 
+      card.proj = toDoTask.proj;
+
       const cardDescr = document.createElement('span');
       cardDescr.textContent = toDoTask.descr;
 
@@ -144,7 +167,20 @@ const UI = (() => {
         module.showCardDetails(event);
       });
 
-      card.append(cardTitle, cardDate, cardDescr, cardPrio, showDetails);
+      const deleteToDo = document.createElement('button');
+      deleteToDo.textContent = 'Delete';
+      deleteToDo.addEventListener('click', (event) => {
+        module.deleteToDo(event);
+      });
+
+      card.append(
+        cardTitle,
+        cardDate,
+        cardDescr,
+        cardPrio,
+        showDetails,
+        deleteToDo,
+      );
       projectToDosContainer.append(card);
     });
     workspace.append(projectSettings, projectToDosContainer);
