@@ -125,6 +125,10 @@ const UI = (() => {
     });
   };
 
+  module.makeCardInfoEditable = (event) => {
+    event.target.removeAttribute('readonly');
+  };
+
   module.appendProjectElements = (arr) => {
     if (projectVisible) {
       return 1;
@@ -147,19 +151,35 @@ const UI = (() => {
       const card = document.createElement('div');
       card.classList.add('to-do-card');
       card.classList.add(`${toDoTask.title}-card`);
-      const cardTitle = document.createElement('span');
-      cardTitle.textContent = toDoTask.title;
+      const cardTitle = document.createElement('input');
+      cardTitle.setAttribute('readonly', 'readonly');
+      cardTitle.value = toDoTask.title;
+      cardTitle.addEventListener('click', (event) => {
+        module.makeCardInfoEditable(event);
+      });
 
       card.proj = toDoTask.proj;
 
-      const cardDescr = document.createElement('span');
-      cardDescr.textContent = toDoTask.descr;
+      const cardDescr = document.createElement('input');
+      cardDescr.setAttribute('readonly', 'readonly');
+      cardDescr.value = toDoTask.descr;
+      cardDescr.addEventListener('click', (event) => {
+        module.makeCardInfoEditable(event);
+      });
 
-      const cardDate = document.createElement('span');
-      cardDate.textContent = `You have to complete this task before ${toDoTask.date}`;
+      const cardDate = document.createElement('input');
+      cardDate.setAttribute('readonly', 'readonly');
+      cardDate.value = `${toDoTask.date}`;
+      cardDate.addEventListener('click', (event) => {
+        module.makeCardInfoEditable(event);
+      });
 
-      const cardPrio = document.createElement('span');
-      cardPrio.textContent = `Priority: ${toDoTask.prio}`;
+      const cardPrio = document.createElement('input');
+      cardPrio.setAttribute('readonly', 'readonly');
+      cardPrio.value = `Priority: ${toDoTask.prio}`;
+      cardPrio.addEventListener('click', (event) => {
+        module.makeCardInfoEditable(event);
+      });
 
       const showDetails = document.createElement('button');
       showDetails.textContent = 'Show details';
