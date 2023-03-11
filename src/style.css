@@ -188,12 +188,28 @@ input:hover, input:focus {
     font-size: 105%;
     gap: 10px;
     margin: 10px;
+    padding-top: 5px;
  }
  .to-do-card span:nth-child(1) {
     font-size: 150%;
  }
 
- .to-do-card span:nth-child(3), .to-do-card span:nth-child(4) {
+ .to-do-card input[readonly='readonly'] {
+    border: 0px solid white;
+ }
+
+ .to-do-card input {
+    width: 80%;
+    font-size: 105%;
+    font-family: 'Teko';
+    text-align: center;
+    color: white;
+    border: 1px solid white;
+    background-color: #0D7377;
+ }
+
+
+ .to-do-card input:nth-child(3), .to-do-card input:nth-child(4) {
     display: none;
  }
 
