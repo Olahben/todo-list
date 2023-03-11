@@ -125,6 +125,43 @@ const UI = (() => {
     });
   };
 
+  module.submitCardChanges = (event) => {
+    const submitChangesBtn = event.target;
+    const inputArr = [];
+    const title =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling
+        .previousSibling.previousSibling.previousSibling;
+    const date =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling
+        .previousSibling.previousSibling;
+    const descr =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling
+        .previousSibling;
+    const priority =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling;
+    inputArr.push(title, date, descr, priority);
+
+    inputArr.forEach((input) => {
+      input.setAttribute('readonly', 'readonly');
+    });
+
+    console.log(submitChangesBtn.parentElement.title);
+    console.log(submitChangesBtn.parentElement.proj);
+    toDo.module.toDoArr.forEach((toDoTask) => {
+      if (
+        toDoTask.title === submitChangesBtn.parentElement.title &&
+        toDoTask.proj === submitChangesBtn.parentElement.proj
+      ) {
+        toDoTask.title = title.value;
+        toDoTask.date = date.value;
+        toDoTask.descr = descr.value;
+        toDoTask.prio = priority.value;
+        submitChangesBtn.parentElement.title = title.value;
+        console.log(toDoTask);
+      }
+    });
+  };
+
   module.makeCardInfoEditable = (event) => {
     event.target.removeAttribute('readonly');
   };
@@ -159,6 +196,7 @@ const UI = (() => {
       });
 
       card.proj = toDoTask.proj;
+      card.title = toDoTask.title;
 
       const cardDescr = document.createElement('input');
       cardDescr.setAttribute('readonly', 'readonly');
@@ -176,7 +214,7 @@ const UI = (() => {
 
       const cardPrio = document.createElement('input');
       cardPrio.setAttribute('readonly', 'readonly');
-      cardPrio.value = `Priority: ${toDoTask.prio}`;
+      cardPrio.value = toDoTask.prio;
       cardPrio.addEventListener('click', (event) => {
         module.makeCardInfoEditable(event);
       });
@@ -193,6 +231,13 @@ const UI = (() => {
         module.deleteToDo(event);
       });
 
+      const submitChanges = document.createElement('button');
+      submitChanges.textContent = 'Submit changes';
+      // submitChanges.style.display = 'none';
+      submitChanges.addEventListener('click', (event) => {
+        module.submitCardChanges(event);
+      });
+
       card.append(
         cardTitle,
         cardDate,
@@ -200,6 +245,7 @@ const UI = (() => {
         cardPrio,
         showDetails,
         deleteToDo,
+        submitChanges,
       );
       projectToDosContainer.append(card);
     });
