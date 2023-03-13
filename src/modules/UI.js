@@ -176,7 +176,19 @@ const UI = (() => {
     });
   };
 
+  module.resetCardInputs = (event) => {
+    const { title } = module.getCardInputs(event);
+    title.style.border = '0px solid white';
+    const { date } = module.getCardInputs(event);
+    date.style.border = '0px solid white';
+    const { descr } = module.getCardInputs(event);
+    descr.style.border = '0px solid white';
+    const { priority } = module.getCardInputs(event);
+    priority.style.border = '0px solid white';
+  };
+
   module.validateCardChanges = (event) => {
+    module.resetCardInputs(event);
     const { title } = module.getCardInputs(event);
     const { date } = module.getCardInputs(event);
     const { descr } = module.getCardInputs(event);
