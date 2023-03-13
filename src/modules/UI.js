@@ -162,6 +162,48 @@ const UI = (() => {
     });
   };
 
+  module.validateCardChanges = (event) => {
+    const submitChangesBtn = event.target;
+    const title =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling
+        .previousSibling.previousSibling.previousSibling;
+    const date =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling
+        .previousSibling.previousSibling;
+    const descr =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling
+        .previousSibling;
+    const priority =
+      submitChangesBtn.previousSibling.previousSibling.previousSibling;
+
+    if (title.value.length < 2) {
+      console.log(title.value.length);
+      title.style.border = 'solid 1px red';
+      return 1;
+    }
+    if (title.value.length > 24) {
+      title.style.border = 'solid 1px red';
+      return 1;
+    }
+    if (descr.value.length > 70) {
+      descr.style.border = 'solid 1px red';
+      return 1;
+    }
+    if (date.value === '') {
+      date.style.border = 'solid 1px red';
+      return 1;
+    }
+    if (priority.value.length < 1) {
+      priority.style.border = 'solid 1px red';
+      return 1;
+    }
+    if (priority.value.length > 30) {
+      priority.style.border = 'solid 1px red';
+      return 1;
+    }
+    module.submitCardChanges(event);
+  };
+
   module.makeCardInfoEditable = (event) => {
     event.target.removeAttribute('readonly');
   };
@@ -235,7 +277,7 @@ const UI = (() => {
       submitChanges.textContent = 'Submit changes';
       // submitChanges.style.display = 'none';
       submitChanges.addEventListener('click', (event) => {
-        module.submitCardChanges(event);
+        module.validateCardChanges(event);
       });
 
       card.append(
