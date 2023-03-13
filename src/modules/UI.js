@@ -125,9 +125,8 @@ const UI = (() => {
     });
   };
 
-  module.submitCardChanges = (event) => {
+  module.getCardInputs = (event) => {
     const submitChangesBtn = event.target;
-    const inputArr = [];
     const title =
       submitChangesBtn.previousSibling.previousSibling.previousSibling
         .previousSibling.previousSibling.previousSibling;
@@ -139,6 +138,21 @@ const UI = (() => {
         .previousSibling;
     const priority =
       submitChangesBtn.previousSibling.previousSibling.previousSibling;
+    return {
+      title,
+      date,
+      descr,
+      priority,
+    };
+  };
+
+  module.submitCardChanges = (event) => {
+    const submitChangesBtn = event.target;
+    const inputArr = [];
+    const { title } = module.getCardInputs(event);
+    const { date } = module.getCardInputs(event);
+    const { descr } = module.getCardInputs(event);
+    const { priority } = module.getCardInputs(event);
     inputArr.push(title, date, descr, priority);
 
     inputArr.forEach((input) => {
@@ -163,18 +177,10 @@ const UI = (() => {
   };
 
   module.validateCardChanges = (event) => {
-    const submitChangesBtn = event.target;
-    const title =
-      submitChangesBtn.previousSibling.previousSibling.previousSibling
-        .previousSibling.previousSibling.previousSibling;
-    const date =
-      submitChangesBtn.previousSibling.previousSibling.previousSibling
-        .previousSibling.previousSibling;
-    const descr =
-      submitChangesBtn.previousSibling.previousSibling.previousSibling
-        .previousSibling;
-    const priority =
-      submitChangesBtn.previousSibling.previousSibling.previousSibling;
+    const { title } = module.getCardInputs(event);
+    const { date } = module.getCardInputs(event);
+    const { descr } = module.getCardInputs(event);
+    const { priority } = module.getCardInputs(event);
 
     if (title.value.length < 2) {
       console.log(title.value.length);
