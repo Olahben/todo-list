@@ -45,9 +45,11 @@ const UI = (() => {
     <span>${projectTitle}</span>
     <i class='bx bx-right-arrow-alt'></i>
     <ul class="sub-menu ${projectTitle}"></ul>`;
-    project.addEventListener('click', (event) => {
+    const arrow = project.children[1];
+    console.log(arrow);
+    arrow.addEventListener('click', (event) => {
       module.toggleSidebarDropdown(event);
-      toDo.module.checkToDoProj(event.target.children[0].textContent);
+      toDo.module.checkToDoProj(event.target.parentElement.children[0].textContent);
       module.removeWorkspaceContent();
     });
 
@@ -63,7 +65,7 @@ const UI = (() => {
   };
 
   module.toggleSidebarDropdown = (event) => {
-    event.target.classList.toggle('showMenu');
+    event.target.parentElement.classList.toggle('showMenu');
   };
 
   module.removeWorkspaceContent = () => {
