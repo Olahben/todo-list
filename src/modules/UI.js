@@ -46,14 +46,25 @@ const UI = (() => {
     <i class='bx bx-up-arrow-alt'></i>
     <ul class="sub-menu ${projectTitle}"></ul>`;
     const arrow = project.children[1];
-    console.log(arrow);
+    arrow.transformed = false;
     arrow.addEventListener('click', (event) => {
+      module.arrowTransformation(arrow);
       module.toggleSidebarDropdown(event);
       toDo.module.checkToDoProj(event.target.parentElement.children[0].textContent);
       module.removeWorkspaceContent();
     });
 
     sidebar.append(project);
+  };
+
+  module.arrowTransformation = (arrow) => {
+    if (arrow.transformed) {
+      arrow.style.transform = '';
+      arrow.transformed = false;
+      return 1;
+    }
+    arrow.style.transform = 'rotate(180deg)';
+    arrow.transformed = true;
   };
 
   module.appendToDo = (title, project) => {
