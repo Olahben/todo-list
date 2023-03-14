@@ -43,7 +43,7 @@ const UI = (() => {
     project.classList.add('project-sidebar');
     project.innerHTML = `
     <span>${projectTitle}</span>
-    <i class='bx bx-right-arrow-alt'></i>
+    <i class='bx bx-up-arrow-alt'></i>
     <ul class="sub-menu ${projectTitle}"></ul>`;
     const arrow = project.children[1];
     console.log(arrow);
