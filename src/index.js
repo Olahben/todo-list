@@ -1,8 +1,10 @@
 import pageLoad from './modules/page-load';
 import './style.css';
 import modal from './modules/modal';
+import store from './modules/storage';
 
 pageLoad();
+store();
 document.querySelector('.add-to-do').addEventListener('click', () => {
   modal.module.loadModal();
   const modalForm = document.querySelector('.modal');
