@@ -26,6 +26,7 @@ const toDo = (() => {
     module.toDoArr.push(toDo2);
     store().module.storeToDo(toDo2);
     module.saveProject(toDo2.proj);
+    store().module.storeProject();
   };
 
   module.checkToDoProj = (project) => {
