@@ -19,8 +19,6 @@ const pageLoad = () => {
 
   const projectsStored = JSON.parse(localStorage.getItem('projectArr'));
   const toDoTasksStored = JSON.parse(localStorage.getItem('toDoArr'));
-  console.log(projectsStored);
-  console.log(toDoTasksStored);
 
   projectsStored.forEach((project) => {
     console.log(project);
