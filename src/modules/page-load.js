@@ -1,3 +1,5 @@
+import UI from './UI';
+
 const pageLoad = () => {
   const content = document.querySelector('#content');
 
@@ -13,6 +15,16 @@ const pageLoad = () => {
 
   toDoContent.append(createToDo);
   content.append(sidebar, toDoContent);
+
+  const projectsStored = JSON.parse(localStorage.getItem('projectArr'));
+  const toDoTaskStored = JSON.parse(localStorage.getItem('toDoArr'));
+  console.log(projectsStored);
+  console.log(toDoTaskStored);
+
+  projectsStored.forEach((project) => {
+    console.log(project);
+    UI.module.createProject(project);
+  });
 };
 
 export default pageLoad;
