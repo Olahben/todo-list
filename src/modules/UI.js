@@ -4,7 +4,6 @@ import modal from './modal';
 const UI = (() => {
   const module = {};
   const projectArr = [];
-  let projectOpenCounter = false;
   let projectVisible = false;
   module.createToDo = () => {};
 
@@ -48,10 +47,12 @@ const UI = (() => {
     const arrow = project.children[1];
     arrow.transformed = false;
     arrow.addEventListener('click', (event) => {
-      module.arrowTransformation(arrow);
       module.toggleSidebarDropdown(event);
-      toDo.module.checkToDoProj(event.target.parentElement.children[0].textContent);
-      module.removeWorkspaceContent();
+      toDo.module.checkToDoProj(
+        event.target.parentElement.children[0].textContent,
+      );
+      module.removeWorkspaceContent(arrow);
+      module.arrowTransformation(arrow);
     });
 
     sidebar.append(project);
@@ -79,17 +80,14 @@ const UI = (() => {
     event.target.parentElement.classList.toggle('showMenu');
   };
 
-  module.removeWorkspaceContent = () => {
+  module.removeWorkspaceContent = (arrow) => {
     const workspace = document.querySelector('#workspace');
-    if (workspace.childNodes[1].textContent === 'Close project') {
-      return;
+    if (!arrow.transformed) {
+      workspace.children[0].remove();
     }
-    if (projectOpenCounter) {
-      workspace.removeChild(workspace.childNodes[1]);
-      return;
+    if (arrow.transformed) {
+      module.closeProject();
     }
-    workspace.removeChild(workspace.childNodes[0]);
-    projectOpenCounter = true;
   };
 
   module.showCardDetails = (event) => {
@@ -246,7 +244,6 @@ const UI = (() => {
     const workspace = document.querySelector('#workspace');
     const projectToDosContainer = document.createElement('div');
     projectToDosContainer.classList.add('project-to-dos');
-
     const projectSettings = document.createElement('div');
     projectSettings.classList.add('settings');
     const close = document.createElement('button');
@@ -306,7 +303,6 @@ const UI = (() => {
 
       const submitChanges = document.createElement('button');
       submitChanges.textContent = 'Submit changes';
-      // submitChanges.style.display = 'none';
       submitChanges.addEventListener('click', (event) => {
         module.validateCardChanges(event);
       });
