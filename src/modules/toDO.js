@@ -1,9 +1,11 @@
 import modal from './modal';
 import UI from './UI';
+import store from './storage';
 
 const toDo = (() => {
   const module = {};
   module.toDoArr = [];
+  module.projectArr = [];
 
   module.createToDo = (title, descr, date, prio, proj) => ({
     title,
@@ -22,6 +24,8 @@ const toDo = (() => {
       modal.module.getFormInfo().project.replace(/\s/g, ''),
     );
     module.toDoArr.push(toDo2);
+    store().module.storeToDo(toDo2);
+    module.saveProject(toDo2.proj);
   };
 
   module.checkToDoProj = (project) => {
@@ -31,13 +35,9 @@ const toDo = (() => {
     UI.module.appendProjectElements(projectToDoTasks);
   };
 
-  module.createProject = (title) => {};
-
-  module.deleteToDo = (title) => {};
-
-  module.changePrio = (title, prio) => {};
-
-  module.completeToDo = (title) => {};
+  module.saveProject = (proj) => {
+    module.projectArr.push(proj);
+  };
 
   return { module };
 })();
