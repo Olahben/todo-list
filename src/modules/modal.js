@@ -9,7 +9,6 @@ const modal = (() => {
     toDoModal.classList.add('modal');
 
     const workspace = document.querySelector('#workspace');
-    console.log(workspace);
 
     const modalForm = document.createElement('form');
     modalForm.innerHTML = `
