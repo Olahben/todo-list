@@ -1,4 +1,5 @@
 import UI from './UI';
+import toDo from './toDO';
 
 const pageLoad = () => {
   const content = document.querySelector('#content');
@@ -17,13 +18,17 @@ const pageLoad = () => {
   content.append(sidebar, toDoContent);
 
   const projectsStored = JSON.parse(localStorage.getItem('projectArr'));
-  const toDoTaskStored = JSON.parse(localStorage.getItem('toDoArr'));
+  const toDoTasksStored = JSON.parse(localStorage.getItem('toDoArr'));
   console.log(projectsStored);
-  console.log(toDoTaskStored);
+  console.log(toDoTasksStored);
 
   projectsStored.forEach((project) => {
     console.log(project);
     UI.module.createProject(project);
+  });
+
+  toDoTasksStored.forEach((toDoTask) => {
+    toDo.module.toDoArr.push(toDoTask);
   });
 };
 
