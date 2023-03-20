@@ -21,6 +21,7 @@ const UI = (() => {
   };
 
   module.createProject = (title) => {
+    const workspace = document.querySelector('#workspace');
     let invalid = false;
     projectArr.forEach((proj) => {
       if (proj === title) {
@@ -47,6 +48,11 @@ const UI = (() => {
     const arrow = project.children[1];
     arrow.transformed = false;
     arrow.addEventListener('click', (event) => {
+      if (workspace.children[0].textContent === 'Create ToDo' || event.target.transformed) {
+        console.log('Keep the process going');
+      } else {
+        return 1;
+      }
       module.toggleSidebarDropdown(event);
       toDo.module.checkToDoProj(
         event.target.parentElement.children[0].textContent,
