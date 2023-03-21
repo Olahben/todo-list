@@ -21,18 +21,23 @@ const pageLoad = () => {
   const toDoTasksStored = JSON.parse(localStorage.getItem('toDoArr'));
   console.log(toDoTasksStored);
 
-  projectsStored.forEach((project) => {
-    console.log(project);
-    UI.module.createProject(project);
-  });
+  if (projectsStored !== null || toDoTasksStored !== null) {
+    projectsStored.forEach((project) => {
+      console.log(project);
+      UI.module.createProject(project);
+    });
+  } else {
+    return 1;
+  }
 
   toDoTasksStored.forEach((toDoTask) => {
     toDo.module.toDoArr.push(toDoTask);
   });
 
   toDoTasksStored.forEach((toDoTask) => {
+    console.log(toDoTask);
     const toDoTaskProj = document.querySelector(`ul.${toDoTask.proj}`);
-    toDoTaskProj.append(toDoTask.title);
+    UI.module.appendToDo(toDoTask.title, toDoTaskProj);
   });
 };
 
