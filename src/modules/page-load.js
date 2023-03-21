@@ -19,6 +19,7 @@ const pageLoad = () => {
 
   const projectsStored = JSON.parse(localStorage.getItem('projectArr'));
   const toDoTasksStored = JSON.parse(localStorage.getItem('toDoArr'));
+  console.log(toDoTasksStored);
 
   projectsStored.forEach((project) => {
     console.log(project);
@@ -27,6 +28,11 @@ const pageLoad = () => {
 
   toDoTasksStored.forEach((toDoTask) => {
     toDo.module.toDoArr.push(toDoTask);
+  });
+
+  toDoTasksStored.forEach((toDoTask) => {
+    const toDoTaskProj = document.querySelector(`ul.${toDoTask.proj}`);
+    toDoTaskProj.append(toDoTask.title);
   });
 };
 
