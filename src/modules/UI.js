@@ -22,9 +22,10 @@ const UI = (() => {
 
   module.createProject = (title) => {
     const workspace = document.querySelector('#workspace');
+    const projectTitle = title.replace(/\s/g, '');
     let invalid = false;
     projectArr.forEach((proj) => {
-      if (proj === title) {
+      if (proj === projectTitle) {
         invalid = true;
         return 1;
       }
@@ -36,7 +37,6 @@ const UI = (() => {
 
     projectArr.push(title);
 
-    const projectTitle = title.replace(/\s/g, '');
     const sidebar = document.querySelector('#sidebar');
     const project = document.createElement('div');
     project.classList.add(projectTitle);
