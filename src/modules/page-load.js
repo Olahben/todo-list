@@ -20,25 +20,32 @@ const pageLoad = () => {
   const projectsStored = JSON.parse(localStorage.getItem('projectArr'));
   const toDoTasksStored = JSON.parse(localStorage.getItem('toDoArr'));
   console.log(toDoTasksStored);
+  console.log(projectsStored);
 
   if (projectsStored !== null || toDoTasksStored !== null) {
-    projectsStored.forEach((project) => {
-      console.log(project);
-      UI.module.createProject(project);
+    toDoTasksStored.forEach((toDoTask) => {
+      UI.module.createProject(toDoTask.proj);
     });
   } else {
     return 1;
   }
 
-  toDoTasksStored.forEach((toDoTask) => {
-    toDo.module.toDoArr.push(toDoTask);
-  });
+  if (projectsStored !== null || toDoTasksStored !== null) {
+    toDoTasksStored.forEach((toDoTask) => {
+      toDo.module.toDoArr.push(toDoTask);
+    });
+  } else {
+    return 1;
+  }
 
-  toDoTasksStored.forEach((toDoTask) => {
-    console.log(toDoTask);
-    const toDoTaskProj = document.querySelector(`ul.${toDoTask.proj}`);
-    UI.module.appendToDo(toDoTask.title, toDoTaskProj);
-  });
+  if (projectsStored !== null || toDoTasksStored !== null) {
+    toDoTasksStored.forEach((toDoTask) => {
+      const toDoTaskProj = document.querySelector(`ul.${toDoTask.proj}`);
+      UI.module.appendToDo(toDoTask.title, toDoTaskProj);
+    });
+  } else {
+    return 1;
+  }
 };
 
 export default pageLoad;
