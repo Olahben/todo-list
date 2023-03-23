@@ -1,5 +1,6 @@
 import toDo from './toDO';
 import modal from './modal';
+import store from './storage';
 
 const UI = (() => {
   const module = {};
@@ -48,7 +49,10 @@ const UI = (() => {
     const arrow = project.children[1];
     arrow.transformed = false;
     arrow.addEventListener('click', (event) => {
-      if (workspace.children[0].textContent === 'Create ToDo' || event.target.transformed) {
+      if (
+        workspace.children[0].textContent === 'Create ToDo' ||
+        event.target.transformed
+      ) {
         console.log('Keep the process going');
       } else {
         return 1;
@@ -123,8 +127,8 @@ const UI = (() => {
   let indexCounter = 0;
   module.deleteToDo = (event) => {
     indexCounter = 0;
-    event.target.parentElement.remove();
-    const toDoTitle = event.target.parentElement.childNodes[0].textContent;
+    // event.target.parentElement.remove();
+    const toDoTitle = event.target.parentElement.childNodes[0].value;
     const toDoProj = event.target.parentElement.proj;
     const toDoTasks = document.querySelectorAll(`.${toDoProj} .sub-menu li`);
     toDoTasks.forEach((task) => {
@@ -138,8 +142,10 @@ const UI = (() => {
       indexCounter++;
       if (toDoObj.title === toDoTitle && toDoObj.proj === toDoProj) {
         toDoArr.splice(indexCounter - 1, 1);
+        store().module.storeToDo();
       }
     });
+    event.target.parentElement.remove();
   };
 
   module.getCardInputs = (event) => {
@@ -175,9 +181,6 @@ const UI = (() => {
     inputArr.forEach((input) => {
       input.setAttribute('readonly', 'readonly');
     });
-
-    console.log(submitChangesBtn.parentElement.title);
-    console.log(submitChangesBtn.parentElement.proj);
     toDo.module.toDoArr.forEach((toDoTask) => {
       if (
         toDoTask.title === submitChangesBtn.parentElement.title &&
@@ -188,7 +191,6 @@ const UI = (() => {
         toDoTask.descr = descr.value;
         toDoTask.prio = priority.value;
         submitChangesBtn.parentElement.title = title.value;
-        console.log(toDoTask);
       }
     });
   };
@@ -212,7 +214,6 @@ const UI = (() => {
     const { priority } = module.getCardInputs(event);
 
     if (title.value.length < 2) {
-      console.log(title.value.length);
       title.style.border = 'solid 1px red';
       return 1;
     }
