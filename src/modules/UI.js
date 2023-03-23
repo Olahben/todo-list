@@ -24,6 +24,10 @@ const UI = (() => {
   module.createProject = (title) => {
     const workspace = document.querySelector('#workspace');
     const projectTitle = title.replace(/\s/g, '');
+    const projectTitleElements = document.querySelectorAll(`.${projectTitle}`);
+    if (projectTitleElements.length > 0) {
+      return;
+    }
     let invalid = false;
     projectArr.forEach((proj) => {
       if (proj === projectTitle) {
