@@ -59,6 +59,7 @@ const UI = (() => {
       ) {
         console.log('Keep the process going');
       } else {
+        console.log('Stop the process');
         return 1;
       }
       module.toggleSidebarDropdown(event);
@@ -268,7 +269,8 @@ const UI = (() => {
     arr.forEach((toDoTask) => {
       const card = document.createElement('div');
       card.classList.add('to-do-card');
-      card.classList.add(`${toDoTask.title}-card`);
+      const toDoTitle = toDoTask.title.replace(/\s/g, '');
+      card.classList.add(`${toDoTitle}-card`);
       const cardTitle = document.createElement('input');
       cardTitle.setAttribute('readonly', 'readonly');
       cardTitle.value = toDoTask.title;
