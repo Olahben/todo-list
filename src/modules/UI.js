@@ -53,14 +53,15 @@ const UI = (() => {
     const arrow = project.children[1];
     arrow.transformed = false;
     arrow.addEventListener('click', (event) => {
-      if (
-        workspace.children[0].textContent === 'Create ToDo' ||
-        event.target.transformed
-      ) {
-        console.log('Keep the process going');
-      } else {
-        console.log('Stop the process');
-        return 1;
+      let stopProcess = false;
+      const workspaceChildren = workspace.childNodes;
+      workspaceChildren.forEach((child) => {
+        if (child.textContent === 'Create ToDo' || event.target.transformed) {
+          stopProcess = true;
+        }
+      });
+      if (!stopProcess) {
+        return;
       }
       module.toggleSidebarDropdown(event);
       toDo.module.checkToDoProj(
@@ -68,9 +69,20 @@ const UI = (() => {
       );
       module.removeWorkspaceContent(arrow);
       module.arrowTransformation(arrow);
+      module.checkWorkspaceContent();
     });
 
     sidebar.append(project);
+  };
+
+  module.checkWorkspaceContent = () => {
+    const workspace = document.querySelector('#workspace');
+    if (workspace.children[0].textContent === 'Create ToDo' && workspace.children[1].textContent === 'Create ToDo') {
+      workspace.children[0].remove();
+    }
+    if (workspace.children[0].textContent === 'Create ToDo' && workspace.children[1].textContent === 'Close project') {
+      workspace.children[0].remove();
+    }
   };
 
   module.arrowTransformation = (arrow) => {
