@@ -210,6 +210,7 @@ const UI = (() => {
         submitChangesBtn.parentElement.title = title.value;
       }
     });
+    store().module.storeToDo();
   };
 
   module.resetCardInputs = (event) => {
