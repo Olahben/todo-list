@@ -47,10 +47,10 @@ const UI = (() => {
     project.classList.add(projectTitle);
     project.classList.add('project-sidebar');
     project.innerHTML = `
-    <span>${projectTitle}</span>
     <i class='bx bx-up-arrow-alt'></i>
+    <span>${projectTitle}</span>
     <ul class="sub-menu ${projectTitle}"></ul>`;
-    const arrow = project.children[1];
+    const arrow = project.children[0];
     arrow.transformed = false;
     arrow.addEventListener('click', (event) => {
       let stopProcess = false;
@@ -65,7 +65,7 @@ const UI = (() => {
       }
       module.toggleSidebarDropdown(event);
       toDo.module.checkToDoProj(
-        event.target.parentElement.children[0].textContent,
+        event.target.parentElement.children[1].textContent,
       );
       module.removeWorkspaceContent(arrow);
       module.arrowTransformation(arrow);
