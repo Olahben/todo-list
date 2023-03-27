@@ -9,15 +9,12 @@ body {
     grid-template-areas: 
     "sidebar content"
     "sidebar content";
-    grid-template-columns: 15vw 85vw;
+    grid-template-columns: 24vw 76vw;
     grid-template-rows: 15vh 85vh;
-
-    border: 1px solid lightskyblue;
 }
 
 #sidebar {
     grid-area: sidebar;
-    border: 1px solid blue;
     background-color: #323232;
     color: white;
     font-family: 'Teko', 'sans-serif';
@@ -61,7 +58,7 @@ button {
     display: none;
     position: fixed;
     z-index: 1;
-    left: 20%;
+    left: 30%;
     right: 35%;
     top: 25%;
 
@@ -69,6 +66,7 @@ button {
     height: 50%;
 
     background-color: #323232;
+    border-radius: 6px;
 }
 
 form {
@@ -237,4 +235,8 @@ input:hover, input:focus {
     font-size: 135%;
     width: max(150px, 15%);
     height: 38%;
+ }
+
+ .bx {
+    margin-right: 10px;
  }
